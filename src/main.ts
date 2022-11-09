@@ -9,8 +9,6 @@ import App from './App.vue'
 
 import ElementPlus from 'element-plus'
 
-import '@/assets/fonts'
-
 import GlobalComponents from '@/components'
 
 const app = createApp(App)

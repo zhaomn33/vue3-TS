@@ -27,5 +27,12 @@ export default defineConfig({
     //     rewrite: (path) => path.replace('/api/', '/')
     //   }
     // }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use '@/styles/element-variables.scss' as *;`
+      }
+    }
   }
 })

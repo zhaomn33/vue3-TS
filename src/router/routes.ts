@@ -1,5 +1,5 @@
 /* global
-  CustomizeRouter
+  CustomizeRouter     ？？？？ 需要更改  Array<RouteRecordRaw & CustomizeRouter>
 */
 import { RouteRecordRaw } from 'vue-router'
 
@@ -7,13 +7,13 @@ import childrenRoutes from '@/router/child-routes'
 // import { localesMapping, isHasLocale } from '@/locales'
 import { isUndefined } from '@/utils/type'
 
-const Layout = () => import('@/components/Layout/index.vue')
+// const Layout = () => import('@/components/Layout/index.vue')
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Root',
-    redirect: '/dashboard',
+    redirect: '/',
     meta: {
       isVirtual: true
     }

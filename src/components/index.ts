@@ -2,6 +2,7 @@
 
 import { App } from 'vue'
 import Layout from '@/components/Layout/index.vue'
+import HelloWorld from '@/components/HelloWorld/index.vue'
 
 const Components = {
   install(app: App<any>) {
@@ -13,6 +14,7 @@ const Components = {
 
 const componentList = [
   Layout,
+  HelloWorld
 ]
 
 export default Components
