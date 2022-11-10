@@ -2,13 +2,17 @@
   <div>
     <HelloWorld msg="Vite + Vue" />
   </div>
-
-  <!-- <HelloWorld msg="Vite + Vue" /> -->
-  <!-- <Layout/> -->
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 
+export default defineComponent({
+  name: 'App',
+  components: {
+    
+  },
+})
 </script>
 
 <style scoped>
