@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HelloWorld msg="Vite + Vue" />
+    <router-view/>
   </div>
 </template>
 
@@ -15,6 +15,6 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-
+<style lang="scss">
+@use "@/styles/index.scss";
 </style>

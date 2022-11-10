@@ -1,0 +1,19 @@
+/* global styles */
+
+.text_nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.underline-highlight {
+  font-style: 14px;
+  color: #155bd4;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.action-column-style {
+  color: #155bd4;
+  cursor: pointer;
+}
