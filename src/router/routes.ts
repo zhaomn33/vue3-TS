@@ -7,11 +7,12 @@ const routes:Array<RouteRecordRaw> = [
     children:[],
     component: () => import('@/modules/userAccount/pages/login.vue')
   },
+  // 主页
   {
     path:'/',
-    name:'homePage',
+    name:'entrance',
     children:[],
-    component: () => import('@/modules/homePage/pages/index.vue')
+    component: () => import('@/components/Layout/index.vue')
   }
 ]
 

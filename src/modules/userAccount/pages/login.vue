@@ -79,6 +79,7 @@ export default defineComponent({
 
     const handleSubmit = () => {
       console.log('ruleForms.value',ruleForms.value)
+      console.log('userData',userData)
       ruleForms.value.validate(async(valid)=>{
         console.log('valid',valid)
         // 校验失败则退出
