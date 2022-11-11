@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
+    ElPageHeader: typeof import('element-plus/es')['ElPageHeader']
     Header: typeof import('./src/components/Layout/Header/index.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld/index.vue')['default']
     Layout: typeof import('./src/components/Layout/index.vue')['default']

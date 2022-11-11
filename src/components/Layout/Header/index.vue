@@ -1,0 +1,70 @@
+<template>
+  <div class="header">
+    <el-page-header :icon="null">
+      <template #title>
+        <img
+          src="@/assets/svg/sw-logo.svg"
+          alt="log"
+          class="system-logo-img"
+        >
+        <h2 class="title">项目名称</h2>
+      </template>
+      <template #content>
+        <!-- 可做成动态切换 稍后修改 -->
+        <span class="subTitle">管理端</span>
+      </template>
+      <template #extra>
+        <div class="user">
+          <div class="userContain">
+            <img src="@/assets/svg/user.svg" alt="">
+            <span class="username">BJ9334</span>
+          </div>
+          <img src="@/assets/svg/logout.svg" alt="">
+        </div>
+      </template>
+  </el-page-header>
+  </div>
+</template>
+
+
+<style scoped lang="scss">
+.header {
+  :deep(){
+    .el-page-header{
+      .el-page-header__title{
+        display: flex;
+        align-items: center;
+        .title{
+          margin-left: 16px;
+        }
+      }
+      .el-page-header__content{
+        .subTitle{
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
+      .el-page-header__extra{
+        .user{
+          display: flex;
+          align-items: center;
+          color: #fff;
+          .userContain{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            .username{
+              margin: 0 10px;
+            }
+          }
+          img{
+          width: 16px;
+          height: 16px;
+          cursor: pointer;
+        }
+        }
+      }
+    }
+  }
+}
+</style>
