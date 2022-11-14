@@ -9,8 +9,18 @@ const routesList:Array<RouteRecordRaw> = [
   },
   {
     path:'/demo2',
-    name:'demo2',
-    component: () => import('@/modules/demo2/pages/index.vue')
+    children:[
+      {
+        path:'/demo2',
+        name:'demo2',
+        component: () => import('@/modules/demo2/pages/index.vue')
+      },
+      {
+        path:'/demo3',
+        name:'demo3',
+        component: () => import('@/modules/demo3/pages/index.vue')
+      },
+    ]
   }
 ]
 

@@ -8,17 +8,29 @@
       v-for="item in menuList"
       :key="item"
     >
-    <!-- v-if="!item?.children" -->
       <el-menu-item
+        v-if="!item.children"
         :index="item.to.name"
         :route="item.to"
       >
         <template #title>{{ item.name }}</template>
       </el-menu-item>
-      <!-- <el-sub-menu
+      <el-sub-menu
         v-else
+        :index="item.name"
       >
-      </el-sub-menu> -->
+        <template #title>
+          <span>{{ item.name }}</span>
+        </template>
+        <el-menu-item
+          v-for="childrenItem in item.children"
+          :key="childrenItem.name"
+          :index="childrenItem.to.name"
+          :route="childrenItem.to"
+        >
+          {{ childrenItem.name }}
+        </el-menu-item>
+      </el-sub-menu>
     </template>
   </el-menu>
 </template>
@@ -27,6 +39,7 @@
 import { ref, computed } from 'vue'
 import { RouteLocationNamedRaw, useRoute } from 'vue-router'
 
+// 菜单列表
 const menuList = [
   {
     icon:'',
@@ -35,8 +48,19 @@ const menuList = [
   },
   {
     icon:'',
-    name:'demo2',
-    to:{ name : 'demo2'}
+    name:'demoList',
+    children:[
+      {
+        icon:'',
+        name:'demo2',
+        to:{ name : 'demo2'}
+      },
+      {
+        icon:'',
+        name:'demo3',
+        to:{ name : 'demo3'}
+      }
+    ]
   },
 ]
 
