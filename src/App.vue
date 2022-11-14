@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <router-view/>
   </div>
 </template>
@@ -17,4 +17,7 @@ export default defineComponent({
 
 <style lang="scss">
 @use "@/styles/index.scss";
+.container{
+  height: 100%;
+}
 </style>

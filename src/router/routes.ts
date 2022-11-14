@@ -1,4 +1,18 @@
+import { defineAsyncComponent } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
+
+const routesList:Array<RouteRecordRaw> = [
+  {
+    path:'/demo',
+    name:'demo',
+    component: () => import('@/modules/demo/pages/index.vue')
+  },
+  {
+    path:'/demo2',
+    name:'demo2',
+    component: () => import('@/modules/demo2/pages/index.vue')
+  }
+]
 
 const routes:Array<RouteRecordRaw> = [
   {
@@ -10,8 +24,15 @@ const routes:Array<RouteRecordRaw> = [
   {
     path:'/',
     name:'entrance',
+    redirect :'/demo',
     component: () => import('@/components/Layout/index.vue'),
-    children:[],
+    children: routesList,
+  },
+  // 404缺省页面
+  {
+    path: '/:pathMatch(.*)*',
+    name: '404',
+    component: defineAsyncComponent(() => import('@/components/404.vue'))
   }
 ]
 

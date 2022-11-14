@@ -5,8 +5,12 @@
         <Header />
       </el-header>
       <el-container>
-        <Aside />
-        <Main />
+        <el-aside width="">
+          <Aside />
+        </el-aside>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -19,7 +23,11 @@
 <style scoped lang="scss">
 .common-layout{
   padding: 0;
+  height: 100%;
   :deep(){
+    .el-container.is-vertical{
+      height: 100%;
+    }
     .el-header, .el-aside, .el-main{
       padding: 0;
     }

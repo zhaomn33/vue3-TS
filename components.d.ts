@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    404: typeof import('./src/components/404.vue')['default']
     Aside: typeof import('./src/components/Layout/Aside/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -14,9 +15,14 @@ declare module '@vue/runtime-core' {
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElHeader: typeof import('element-plus/es')['ElHeader']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
     ElPageHeader: typeof import('element-plus/es')['ElPageHeader']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     Header: typeof import('./src/components/Layout/Header/index.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld/index.vue')['default']
     Layout: typeof import('./src/components/Layout/index.vue')['default']
