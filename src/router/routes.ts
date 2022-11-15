@@ -37,6 +37,9 @@ const routes:Array<RouteRecordRaw> = [
     redirect :'/demo',
     component: () => import('@/components/Layout/index.vue'),
     children: routesList,
+    meta: {
+      isVirtual: true
+    }
   },
   // 404缺省页面
   {

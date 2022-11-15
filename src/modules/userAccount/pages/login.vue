@@ -3,7 +3,7 @@
     <el-form
       class="login-box"
       ref="ruleForms"
-      :model="userData"
+      :model="userInfo"
       :rules="rules"
       @keyup.enter="handleSubmit()"
     >
@@ -16,7 +16,7 @@
         <el-input
           type="text"
           placeholder="请输入用户名"
-          v-model="userData.username"
+          v-model="userInfo.username"
         />
       </el-form-item>
       <el-form-item
@@ -27,13 +27,14 @@
         <el-input
           type="password"
           placeholder="请输入密码"
-          v-model="userData.password"
+          v-model="userInfo.password"
         />
       </el-form-item>
       <el-form-item>
         <el-button
           type="primary"
           class="submitBtn"
+          :loading="loading"
           @click="handleSubmit()"
         >
           登录
@@ -51,6 +52,9 @@ import {
 } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
+import useUserAccount from '@/modules/UserAccount/store'
+
+type IUserAccount = ReturnType<typeof useUserAccount>
 
 export default defineComponent({
   name: 'Login',
@@ -58,11 +62,15 @@ export default defineComponent({
   props: {},
   setup() {
     const router = useRouter()
+    const store = useUserAccount()
+
+    // 表单提交状态
+    const loading = ref(false)
 
     const ruleForms = ref()
-    const userData = reactive({
-      username:'',
-      password:''
+    const userInfo = reactive({
+      username:'admin',
+      password:'123456'
     })
     const rules = {
       username:[{
@@ -78,22 +86,34 @@ export default defineComponent({
     }
 
     const handleSubmit = () => {
-      console.log('ruleForms.value',ruleForms.value)
-      console.log('userData',userData)
-      ruleForms.value.validate(async(valid)=>{
-        console.log('valid',valid)
+      // console.log('ruleForms.value',ruleForms.value)
+      console.log('userInfo',userInfo)
+      ruleForms.value.validate(async(valid:boolean)=>{
+        // console.log('valid',valid)
         // 校验失败则退出
         if(!valid) return
+        // 验证通过 展示 loading
+        loading.value = true
+        // 请求提交
+        // const data = store.login(userInfo).finally(() => {
+        //   loading.value = false
+        //   console.log('data',data)
+        // })
+        // console.log('data',data)
 
         ElMessage.success('登录成功!')
-        router.push('/')
+        // router.push('/').then(()=>{
+        //   loading.value = false
+        //   console.log('登录成功')
+        // })
       })
     }
 
     return {
       ruleForms,
-      userData,
+      userInfo,
       rules,
+      loading,
 
       handleSubmit
     }

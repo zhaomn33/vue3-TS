@@ -55,13 +55,15 @@ const service: AxiosInstance = axios.create({
 service.interceptors.request.use(
   request => {
     const token = Cookie.get('token')
-    console.log('token',token);
+    console.log('token',token); // 4v8acea-6a89-2a2ebc-10802-9ac19003
     if (
       !(request.data instanceof FormData)
     ) {
       // request.data = decamelizeKeys(request.data)
     }
     request.headers!.Authorization = token as string
+    console.log('request.headers',request.headers);
+    
     return request
   },
   error => {
@@ -97,3 +99,5 @@ service.interceptors.response.use(
     return Promise.reject(error.response.data);
   } 
 )
+
+export default service
