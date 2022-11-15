@@ -66,7 +66,7 @@ const menuList = [
 
 const route = useRoute()
 
-const defaultActive = ref('/demo')
+const defaultActive = ref('demo')
 
 
 </script>

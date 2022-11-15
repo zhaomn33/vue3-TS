@@ -6,6 +6,7 @@ import App from './App.vue'
 import router from '@/router'
 
 import ElementPlus from 'element-plus'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import 'element-plus/dist/index.css'
 
 import GlobalComponents from '@/components'
@@ -17,7 +18,9 @@ app
   .use(Pinia)
 
 app
-  .use(ElementPlus)
+  .use(ElementPlus, {
+    locale: zhCn
+  })
   .use(GlobalComponents)
   .mount('#app')
 

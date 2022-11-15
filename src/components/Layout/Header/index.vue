@@ -14,18 +14,37 @@
         <span class="subTitle">管理端</span>
       </template>
       <template #extra>
-        <div class="user">
-          <div class="userContain">
-            <img src="@/assets/svg/user.svg" alt="">
-            <span class="username">BJ9334</span>
+        <el-dropdown
+          trigger="click"
+        >
+          <div class="user">
+            <div class="userContain">
+              <img src="@/assets/svg/user.svg" alt="">
+              <span class="username">BJ9334</span>
+            </div>
+            <img src="@/assets/svg/logout.svg" alt="">
           </div>
-          <img src="@/assets/svg/logout.svg" alt="">
-        </div>
+          <template #dropdown>
+            <el-dropdown-item
+              @click="handleLogout"
+            >
+              <span>退出登录</span>
+            </el-dropdown-item>
+          </template>
+        </el-dropdown>
       </template>
   </el-page-header>
   </div>
 </template>
 
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const handleLogout = () => {
+  console.log('handleLogout');
+  window.location.href='/login'
+}
+</script>
 
 <style scoped lang="scss">
 .header {
