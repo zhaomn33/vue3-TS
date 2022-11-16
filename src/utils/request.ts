@@ -55,14 +55,14 @@ const service: AxiosInstance = axios.create({
 service.interceptors.request.use(
   request => {
     const token = Cookie.get('token')
-    console.log('token',token); // 4v8acea-6a89-2a2ebc-10802-9ac19003
+    // console.log('token',token); // 4v8acea-6a89-2a2ebc-10802-9ac19003
     if (
       !(request.data instanceof FormData)
     ) {
       // request.data = decamelizeKeys(request.data)
     }
     request.headers!.Authorization = token as string
-    console.log('request.headers',request.headers);
+    // console.log('request.headers',request.headers);
     
     return request
   },
@@ -78,7 +78,7 @@ service.interceptors.request.use(
 // response 响应拦截器
 service.interceptors.response.use(
   response => {
-    console.log('response',response);
+    console.log('response',response.data.status);
     const res = response.data;
     if(res.code != 200){
       return;
@@ -86,26 +86,16 @@ service.interceptors.response.use(
     return response.data;
   },
   error=>{
-    console.log('error',error);
-    
     if(error.response ){
       console.log('error.response',error.response);
-
-      console.log('location.href',location.href);
-      
       
       // const match = /.+[#]/g.exec(location.href);
-
-      // console.log('match',match);
-      
       // if(process.env.NODE_ENV === 'production'){
       //   location.href = '' //url
       // } else {
       //   const url = match[0] + '/login';
       //   location.href = url;
       // }
-      // console.log('Promise.reject(error.response.data)',Promise.reject(error.response.data));
-      
 
       return false;
     }

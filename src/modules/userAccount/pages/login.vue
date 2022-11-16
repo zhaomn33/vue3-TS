@@ -85,27 +85,22 @@ export default defineComponent({
 
     const handleSubmit = () => {
       // console.log('ruleForms.value',ruleForms.value)
-      console.log('userInfo',userInfo)
+      // console.log('userInfo',userInfo)
       ruleForms.value.validate(async(valid:boolean)=>{
         // console.log('valid',valid)
         // 校验失败则退出
         if(!valid) return
         // 验证通过 展示 loading
         loading.value = true
-        console.log('11111111')
         // 请求提交
-        const data = store.login(userInfo)
-        .finally(() => {
-          console.log('finally');
-          
-          loading.value = false
+        const data = store.login(userInfo).finally(() => {
+          ElMessage.success('登录成功!')
+          router.push('/').then(()=>{
+            loading.value = false
+            console.log('登录成功')
+          })
         })
-        console.log('handleSubmit 1212 data',data)
-        // ElMessage.success('登录成功!')
-        // router.push('/').then(()=>{
-        //   loading.value = false
-        //   console.log('登录成功')
-        // })
+        // console.log('handleSubmit data',data)
       })
     }
 
