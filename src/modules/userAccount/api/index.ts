@@ -2,31 +2,47 @@ import request from '@/utils/request'
 import { LoginForm, LoginResponse } from '@/@types/login'
 
 const UserAccountAPI = {
-  login(data: LoginForm){
+  login(data: LoginForm) {
+    console.log('API datadata',data);
+    
+    console.log(1212121,request<LoginResponse>({
+      method: 'post',
+      url: '/login',
+      data
+    }));
+    
     return request<LoginResponse>({
       method: 'post',
       url: '/login',
       data
     })
   },
-  // const login = (data: {
-  //   account: string
-  //   pwd: string
-  //   imgcode: string
-  // }) => {
-  //   return request<LoginResponse>({
-  //     method: 'POST',
-  //     url: '/login',
-  //     data
-  //   })
-  // }
 
-  logout(){
+  logout() {
     return request({
       url: '/logout',
       method: 'post'
     })
-  }
+  },
+
+  getUserInfoData(params = {}) {
+    // return request({
+    //   url: '/user_info',
+    //   method: 'get',
+    //   params
+    // })
+    return {
+      error: 0,
+      msg: 'OK',
+      data: {
+        language: 'zh-hans',
+        Authorization: '4v8acea-6a89-2a2ebc-10802-9ac19003',
+        user: {
+          username: 'admin',
+        }
+      }
+    }
+  },
 }
 
 export default UserAccountAPI

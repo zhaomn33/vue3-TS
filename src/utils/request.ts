@@ -86,18 +86,31 @@ service.interceptors.response.use(
     return response.data;
   },
   error=>{
-    if(error.response && error.response.status === 401){
+    console.log('error',error);
+    
+    if(error.response ){
+      console.log('error.response',error.response);
+
+      console.log('location.href',location.href);
+      
+      
       // const match = /.+[#]/g.exec(location.href);
+
+      // console.log('match',match);
+      
       // if(process.env.NODE_ENV === 'production'){
       //   location.href = '' //url
       // } else {
       //   const url = match[0] + '/login';
       //   location.href = url;
       // }
+      // console.log('Promise.reject(error.response.data)',Promise.reject(error.response.data));
+      
+
       return false;
     }
     return Promise.reject(error.response.data);
-  } 
+  }
 )
 
 export default service

@@ -54,8 +54,6 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import useUserAccount from '@/modules/UserAccount/store'
 
-type IUserAccount = ReturnType<typeof useUserAccount>
-
 export default defineComponent({
   name: 'Login',
   components: {},
@@ -94,14 +92,16 @@ export default defineComponent({
         if(!valid) return
         // 验证通过 展示 loading
         loading.value = true
+        console.log('11111111')
         // 请求提交
-        // const data = store.login(userInfo).finally(() => {
-        //   loading.value = false
-        //   console.log('data',data)
-        // })
-        // console.log('data',data)
-
-        ElMessage.success('登录成功!')
+        const data = store.login(userInfo)
+        .finally(() => {
+          console.log('finally');
+          
+          loading.value = false
+        })
+        console.log('handleSubmit 1212 data',data)
+        // ElMessage.success('登录成功!')
         // router.push('/').then(()=>{
         //   loading.value = false
         //   console.log('登录成功')

@@ -9,8 +9,23 @@ const useUserAccount = defineStore('UserAccount',{
   },
   actions: {
     async login(data:any) {
+      console.log('store login data',data);
+      console.log(33333333);
+      
       const res = await UserAccountAPI.login(data)
-      console.log('res',res);
+      console.log(22222222);
+      
+      console.log('store login res',res);
+      return res
+    },
+    async getUserInfo() {
+      console.log('getUserInfo');
+      
+      const res = await UserAccountAPI.getUserInfoData()
+      console.log('getUserInfo res',res);
+      this.userInfo = res.data
+      console.log('this.userInfo',this.userInfo);
+      
       return res
     }
   }
