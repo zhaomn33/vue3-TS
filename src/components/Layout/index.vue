@@ -1,15 +1,21 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header>
+      <el-header
+        style="background-color: #ade"
+      >
         <Header />
       </el-header>
       <el-container>
-        <el-aside width="240px">
+        <el-aside>
           <Aside />
         </el-aside>
         <el-main>
-          <router-view/>
+          <router-view v-slot="{ Component }">
+            <KeepAlive>
+              <Component :is="Component" />
+            </KeepAlive>
+          </router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -28,12 +34,14 @@
     .el-container.is-vertical{
       height: 100%;
     }
-    .el-header, .el-aside, .el-main{
+    .el-aside, .el-main{
       padding: 0;
     }
     .el-header{
-      background-color: skyblue;
       padding: 0 16px;
+    }
+    .el-aside{
+      width: auto;
     }
   }
 }
