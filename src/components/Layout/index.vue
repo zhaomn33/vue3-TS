@@ -2,7 +2,7 @@
   <div class="common-layout">
     <el-container>
       <el-header
-        style="background-color: #ade"
+        style="background-color: #9be"
       >
         <Header />
       </el-header>

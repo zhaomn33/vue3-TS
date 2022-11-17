@@ -6,6 +6,7 @@
       :router="true"
       :collapse="isCollapse"
       :collapse-transition="false"
+      text-color="#333"
     >
       <template
         v-for="item in menuList"
@@ -106,7 +107,14 @@ const menuList = [
 ]
 
 // 默认激活的页面
-const defaultActive = ref('demo')
+const defaultActive = computed(()=>{
+  const name = route.name as string
+  if(!!name){
+    return name
+  }else{
+    return 'demo'
+  }
+})
 
 const isCollapse = ref(false)
 const handleCollapse = () => {
