@@ -7,11 +7,11 @@
           alt="log"
           class="system-logo-img"
         >
-        <h2 class="title">项目名称</h2>
+        <h2 class="title">{{ headerData.title }}</h2>
       </template>
       <template #content>
-        <!-- 可做成动态切换 稍后修改 -->
-        <span class="subTitle">管理端</span>
+        <!-- 可做成动态切换 需要时可修改 -->
+        <span class="subTitle">{{ headerData.port }}</span>
       </template>
       <template #extra>
         <el-dropdown
@@ -39,6 +39,16 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+
+const props = defineProps({
+  headerData: {
+    type: Object,
+    default: {
+      title:'这里是默认项目名称',
+      port:'这里是默认端'
+    }
+  }
+})
 
 const handleLogout = () => {
   console.log('handleLogout');
@@ -77,10 +87,10 @@ const handleLogout = () => {
             }
           }
           img{
-          width: 16px;
-          height: 16px;
-          cursor: pointer;
-        }
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+          }
         }
       }
     }

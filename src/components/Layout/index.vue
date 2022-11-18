@@ -4,7 +4,9 @@
       <el-header
         style="background-color: #9be"
       >
-        <Header />
+        <Header 
+          :headerData="headerData"
+        />
       </el-header>
       <el-container>
         <el-aside>
@@ -22,8 +24,13 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import { ref } from 'vue'
 
+const headerData = {
+  title:'项目名称11',
+  port:'管理端11'
+}
 </script>
 
 <style scoped lang="scss">
