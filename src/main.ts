@@ -6,6 +6,7 @@ import App from './App.vue'
 import router from '@/router'
 
 import '@/assets/fonts'
+import '@/router/permission'
 
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'

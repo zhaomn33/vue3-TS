@@ -17,10 +17,10 @@ const useUserAccount = defineStore('UserAccount',{
       return res
     },
     async getUserInfo() {
-      console.log('getUserInfo');
+      // console.log('getUserInfo');
       
       const res = await UserAccountAPI.getUserInfoData()
-      console.log('getUserInfo res',res);
+      // console.log('getUserInfo res',res);
       this.userInfo = res.data
       console.log('this.userInfo',this.userInfo);
       
