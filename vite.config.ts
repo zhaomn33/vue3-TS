@@ -6,7 +6,6 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // 如果编辑器提示 path 模块找不到，则可以安装一下 @types/node -> npm i @types/node -D
 import { resolve } from 'path'
 import { terser } from 'rollup-plugin-terser'
-import svgLoader from 'vite-svg-loader'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,7 +18,6 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),
-    svgLoader(),
     terser(
       {
         compress: {
