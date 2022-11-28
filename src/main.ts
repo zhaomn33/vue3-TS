@@ -14,6 +14,7 @@ import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 import GlobalComponents from '@/components'
+import Widgets from '@/widgets'
 
 const app = createApp(App)
 
@@ -30,6 +31,7 @@ app
     locale: zhCn
   })
   .use(GlobalComponents)
+  .use(Widgets)
   .mount('#app')
 
 export default app

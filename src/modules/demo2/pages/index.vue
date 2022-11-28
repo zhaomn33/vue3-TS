@@ -1,15 +1,34 @@
 <template>
   <div>
-    <svg
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      baseProfile="full"
-      width="1000" height="1000"
-    >
-      <g fill="red">
-        <rect x="10" y="10" width="100" height="100" />
-        <rect x="200" y="10" width="100" height="100" />
-      </g>
-    </svg>
+    demo2
   </div>
 </template>
+
+<script lang="ts">
+import { ElMessage } from 'element-plus'
+import {
+  defineComponent,
+  ref
+} from 'vue'
+
+export default defineComponent({
+  name: 'demo2',
+  components: {},
+  props: {},
+  setup() {
+    // 验证规则
+    const validationRules = async() => {
+      return new Promise((resolve) => {
+        console.log('resolve',resolve)
+        resolve(true)
+        ElMessage.success('验证成功')
+      })
+    }
+
+    return {
+      validationRules
+    }
+  }
+
+})
+</script>

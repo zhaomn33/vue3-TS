@@ -1,16 +1,17 @@
 /* global
   IRequestData
  */
-  // import { filterResponseTypes } from '@/store/utils/mixin'
+  import { filterResponseTypes } from '@/store/utils/mixin'
+  import { WidgetsPlugins } from '@/widgets/types'
   import { ComponentPublicInstance } from 'vue'
   
-  // declare module 'vue' {
-  //   export type ComponentPublicInstanceCostom = ComponentPublicInstance<WidgetsPlugins>
+  declare module 'vue' {
+    export type ComponentPublicInstanceCostom = ComponentPublicInstance<WidgetsPlugins>
   
-  //   export interface VNode {
-  //     destroy?: any
-  //   }
-  // }
+    export interface VNode {
+      destroy?: any
+    }
+  }
   
   declare module 'axios' {
     export interface AxiosRequestConfig {
@@ -24,11 +25,11 @@
   
   }
   
-  // declare module 'pinia' {
-  //   export interface PiniaCustomProperties {
-  //     filterResponse: filterResponseTypes
-  //   }
-  // }
+  declare module 'pinia' {
+    export interface PiniaCustomProperties {
+      filterResponse: filterResponseTypes
+    }
+  }
   
   declare global {
     type CustomizeRouter = {
