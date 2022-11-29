@@ -74,6 +74,7 @@ const handleLogout = () => {
         }
       }
       .el-page-header__extra{
+        display: flex;
         .user{
           display: flex;
           align-items: center;

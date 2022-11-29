@@ -45,7 +45,8 @@ const headerData = {
       padding: 0;
     }
     .el-header{
-      padding: 0 16px;
+      padding: 6px 16px;
+      height: 50px;
     }
     .el-aside{
       width: auto;
