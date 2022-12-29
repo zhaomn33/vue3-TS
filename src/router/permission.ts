@@ -2,11 +2,11 @@ import router from '@/router'
 import useUserAccount from '@/modules/UserAccount/store'
 
 import Cookie from 'js-cookie'
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
-router.beforeEach(async (to, from, next) => {
-  NProgress.start(); // 开启顶部加载动画
+router.beforeEach(async(to, from, next) => {
+  NProgress.start() // 开启顶部加载动画
   const userAccountStore = useUserAccount()
   // console.log('beforeEach to' ,to);
   // console.log("Cookie.get('token')",Cookie.get('token'));
@@ -15,7 +15,7 @@ router.beforeEach(async (to, from, next) => {
   if (!Cookie.get('token')) {
 
     next('/login')
-    NProgress.done(); // 关闭顶部加载动画
+    NProgress.done() // 关闭顶部加载动画
 
     return
   }
@@ -23,7 +23,7 @@ router.beforeEach(async (to, from, next) => {
   const { data, error } = await userAccountStore.getUserInfo()
   // console.log('data',data);
 
-  if(error){
+  if (error){
 
     Cookie.remove('token')
     next('/login')

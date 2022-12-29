@@ -67,8 +67,14 @@
       class="collapseBtn"
       @click="handleCollapse"
     >
-      <Expand v-if="isCollapse" style="width: 1.2em; height: 1.2em;"/>
-      <Fold v-else style="width: 1.2em; height: 1.2em;"/>
+      <Expand
+        v-if="isCollapse"
+        style="width: 1.2em; height: 1.2em;"
+      />
+      <Fold
+        v-else
+        style="width: 1.2em; height: 1.2em;"
+      />
     </div>
   </div>
 </template>
@@ -80,38 +86,38 @@ const route = useRoute()
 // 菜单列表
 const menuList = [
   {
-    icon:'#icon-hetongduanguanli',
-    name:'demo',
-    index:'demo',
-    to:{ name : 'demo'}
+    icon: '#icon-hetongduanguanli',
+    name: 'demo',
+    index: 'demo',
+    to: { name: 'demo' }
   },
   {
-    icon:'#icon-hetongduanguanli',
-    name:'demoList',
-    index:'demoList',
-    children:[
+    icon: '#icon-hetongduanguanli',
+    name: 'demoList',
+    index: 'demoList',
+    children: [
       {
-        icon:'#icon-dictionaries',
-        name:'demo2',
-        index:'demo2',
-        to:{ name : 'demo2'}
+        icon: '#icon-dictionaries',
+        name: 'demo2',
+        index: 'demo2',
+        to: { name: 'demo2' }
       },
       {
-        icon:'#icon-dictionaries',
-        name:'demo3',
-        index:'demo3',
-        to:{ name : 'demo3'}
+        icon: '#icon-dictionaries',
+        name: 'demo3',
+        index: 'demo3',
+        to: { name: 'demo3' }
       }
     ]
-  },
+  }
 ]
 
 // 默认激活的页面
-const defaultActive = computed(()=>{
+const defaultActive = computed(() => {
   const name = route.name as string
-  if(!!name){
+  if (name){
     return name
-  }else{
+  } else {
     return 'demo'
   }
 })

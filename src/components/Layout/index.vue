@@ -4,8 +4,8 @@
       <el-header
         style="background-color: #9be"
       >
-        <Header 
-          :headerData="headerData"
+        <Header
+          :header-data="headerData"
         />
       </el-header>
       <el-container>
@@ -28,8 +28,8 @@
 import { ref } from 'vue'
 
 const headerData = {
-  title:'项目名称11',
-  port:'管理端11'
+  title: '项目名称11',
+  port: '管理端11'
 }
 </script>
 

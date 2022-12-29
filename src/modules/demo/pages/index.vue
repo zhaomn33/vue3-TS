@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { 
+import {
   defineComponent,
   getCurrentInstance,
   ComponentPublicInstanceCostom,
@@ -26,7 +26,7 @@ import {
 import demo2 from '@/modules/demo2/pages/index.vue'
 
 export default defineComponent({
-  name: 'demo',
+  name: 'Demo',
   components: {},
   props: {},
   setup() {
@@ -42,7 +42,7 @@ export default defineComponent({
         dialogWidth: '500px',
         confirmText: '提交',
         showLeftFooter: false,
-        renderComponent:{
+        renderComponent: {
           data,
           component: demo2
         },

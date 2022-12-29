@@ -19,10 +19,16 @@
         >
           <div class="user">
             <div class="userContain">
-              <img src="@/assets/svg/user.svg" alt="">
+              <img
+                src="@/assets/svg/user.svg"
+                alt=""
+              >
               <span class="username">BJ9334</span>
             </div>
-            <img src="@/assets/svg/logout.svg" alt="">
+            <img
+              src="@/assets/svg/logout.svg"
+              alt=""
+            >
           </div>
           <template #dropdown>
             <el-dropdown-item
@@ -43,16 +49,18 @@ import { ref } from 'vue'
 const props = defineProps({
   headerData: {
     type: Object,
-    default: {
-      title:'这里是默认项目名称',
-      port:'这里是默认端'
+    default: () => {
+      return {
+        title: '这里是默认项目名称',
+        port: '这里是默认端'
+      }
     }
   }
 })
 
 const handleLogout = () => {
-  console.log('handleLogout');
-  window.location.href='/login'
+  console.log('handleLogout')
+  window.location.href = '/login'
 }
 </script>
 

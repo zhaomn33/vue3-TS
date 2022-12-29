@@ -12,14 +12,14 @@ import {
 } from 'vue'
 
 export default defineComponent({
-  name: 'demo2',
+  name: 'Demo2',
   components: {},
   props: {},
   setup() {
     // 验证规则
     const validationRules = async() => {
       return new Promise((resolve) => {
-        console.log('resolve',resolve)
+        console.log('resolve', resolve)
         resolve(true)
         ElMessage.success('验证成功')
       })

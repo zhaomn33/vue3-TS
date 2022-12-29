@@ -13,10 +13,10 @@ export default defineConfig({
     vue(),
     // 自动引入全局变量
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver()]
     }),
     terser(
       {

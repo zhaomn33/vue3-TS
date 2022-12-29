@@ -4,7 +4,7 @@ import { LoginForm, LoginResponse } from '@/@types/login'
 const UserAccountAPI = {
   login(data: LoginForm) {
     // console.log('API datadata',data);
-    
+
     // return request<LoginResponse>({
     //   method: 'post',
     //   url: '/login',
@@ -18,7 +18,7 @@ const UserAccountAPI = {
         language: 'zh-hans',
         Authorization: '4v8acea-6a89-2a2ebc-10802-9ac19003',
         user: {
-          username: 'admin',
+          username: 'admin'
         }
       }
     }
@@ -44,11 +44,11 @@ const UserAccountAPI = {
         language: 'zh-hans',
         Authorization: '4v8acea-6a89-2a2ebc-10802-9ac19003',
         user: {
-          username: 'admin',
+          username: 'admin'
         }
       }
     }
-  },
+  }
 }
 
 export default UserAccountAPI

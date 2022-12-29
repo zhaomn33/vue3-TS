@@ -1,8 +1,8 @@
 <template>
   <div class="login-container">
     <el-form
-      class="login-box"
       ref="ruleForms"
+      class="login-box"
       :model="userInfo"
       :rules="rules"
       @keyup.enter="handleSubmit()"
@@ -14,9 +14,9 @@
         prop="username"
       >
         <el-input
+          v-model="userInfo.username"
           type="text"
           placeholder="请输入用户名"
-          v-model="userInfo.username"
         />
       </el-form-item>
       <el-form-item
@@ -25,9 +25,9 @@
         prop="password"
       >
         <el-input
+          v-model="userInfo.password"
           type="password"
           placeholder="请输入密码"
-          v-model="userInfo.password"
         />
       </el-form-item>
       <el-form-item>
@@ -67,35 +67,35 @@ export default defineComponent({
 
     const ruleForms = ref()
     const userInfo = reactive({
-      username:'admin',
-      password:'123456'
+      username: 'admin',
+      password: '123456'
     })
     const rules = {
-      username:[{
-        required:true,
-        message:"请输入用户名",
-        trigger:"change"
+      username: [{
+        required: true,
+        message: '请输入用户名',
+        trigger: 'change'
       }],
-      password:[{
-        required:true,
-        message:"请输入密码",
-        trigger:"change"
+      password: [{
+        required: true,
+        message: '请输入密码',
+        trigger: 'change'
       }]
     }
 
     const handleSubmit = () => {
       // console.log('ruleForms.value',ruleForms.value)
       // console.log('userInfo',userInfo)
-      ruleForms.value.validate(async(valid:boolean)=>{
+      ruleForms.value.validate(async(valid:boolean) => {
         // console.log('valid',valid)
         // 校验失败则退出
-        if(!valid) return
+        if (!valid) return
         // 验证通过 展示 loading
         loading.value = true
         // 请求提交
         const data = store.login(userInfo).finally(() => {
           ElMessage.success('登录成功!')
-          router.push('/').then(()=>{
+          router.push('/').then(() => {
             loading.value = false
             console.log('登录成功')
           })
