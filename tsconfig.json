@@ -40,5 +40,5 @@
     "__tests__/**/*.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules","vue-demi", "@vite/client", "@vite/env"]
 }
