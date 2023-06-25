@@ -23,7 +23,7 @@ import {
   ref,
   reactive
 } from 'vue'
-import demo2 from '@/modules/demo2/pages/index.vue'
+import threeJS from '@/modules/threeJS/pages/index.vue'
 
 export default defineComponent({
   name: 'Demo',
@@ -44,7 +44,7 @@ export default defineComponent({
         showLeftFooter: false,
         renderComponent: {
           data,
-          component: demo2
+          component: threeJS
         },
         async onConfirm(instance: any) {
           const isValid = await instance.validationRules()

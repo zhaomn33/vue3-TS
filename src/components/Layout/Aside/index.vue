@@ -98,15 +98,21 @@ const menuList = [
     children: [
       {
         icon: '#icon-dictionaries',
-        name: 'demo2',
-        index: 'demo2',
-        to: { name: 'demo2' }
+        name: 'threeJS',
+        index: 'threeJS',
+        to: { name: 'threeJS' }
       },
       {
         icon: '#icon-dictionaries',
-        name: 'demo3',
-        index: 'demo3',
-        to: { name: 'demo3' }
+        name: 'svg',
+        index: 'svg',
+        to: { name: 'svg' }
+      },
+      {
+        icon: '#icon-dictionaries',
+        name: 'echarts',
+        index: 'echarts',
+        to: { name: 'echarts' }
       }
     ]
   }
