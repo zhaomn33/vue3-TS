@@ -22,7 +22,7 @@ const useUserAccount = defineStore('UserAccount', {
       const res = await UserAccountAPI.getUserInfoData()
       // console.log('getUserInfo res',res);
       this.userInfo = res.data
-      console.log('this.userInfo', this.userInfo)
+      // console.log('this.userInfo', this.userInfo)
 
       return res
     }

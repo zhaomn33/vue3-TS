@@ -113,8 +113,20 @@ const menuList = [
         name: 'echarts',
         index: 'echarts',
         to: { name: 'echarts' }
+      },
+      {
+        icon: '#icon-dictionaries',
+        name: 'canvasDemo',
+        index: 'canvasDemo',
+        to: { name: 'canvasDemo' }
       }
     ]
+  },
+  {
+    icon: '#icon-hetongduanguanli',
+    name: '虚拟化表格',
+    index: 'virtualizedTable',
+    to: { name: 'virtualizedTable' }
   }
 ]
 

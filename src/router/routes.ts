@@ -24,8 +24,18 @@ const routesList:Array<RouteRecordRaw> = [
         path: '/echarts',
         name: 'echarts',
         component: () => import('@/modules/echarts/pages/index.vue')
+      },
+      {
+        path: '/canvasDemo',
+        name: 'canvasDemo',
+        component: () => import('@/modules/canvasDemo/pages/index.vue')
       }
     ]
+  },
+  {
+    path: '/virtualizedTable',
+    name: 'virtualizedTable',
+    component: () => import('@/modules/virtualizedTable/pages/index.vue')
   }
 ]
 

@@ -53,5 +53,10 @@ export default defineConfig({
         additionalData: `@use '@/styles/element-variables.scss' as *;`
       }
     }
+  },
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment',
+    jsxInject: "import { h } from 'vue';"
   }
 })
