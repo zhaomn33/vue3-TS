@@ -36,6 +36,11 @@ const routesList:Array<RouteRecordRaw> = [
     path: '/virtualizedTable',
     name: 'virtualizedTable',
     component: () => import('@/modules/virtualizedTable/pages/index.vue')
+  },
+  {
+    path: '/PersonChangeDemo',
+    name: 'PersonChangeDemo',
+    component: () => import('@/modules/personChangeDialog/pages/index.vue')
   }
 ]
 

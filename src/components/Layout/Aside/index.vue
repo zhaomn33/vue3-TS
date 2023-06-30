@@ -127,6 +127,12 @@ const menuList = [
     name: '虚拟化表格',
     index: 'virtualizedTable',
     to: { name: 'virtualizedTable' }
+  },
+  {
+    icon: '#icon-hetongduanguanli',
+    name: '选择人员弹框',
+    index: 'PersonChangeDemo',
+    to: { name: 'PersonChangeDemo' }
   }
 ]
 
