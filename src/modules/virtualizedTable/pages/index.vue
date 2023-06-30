@@ -344,9 +344,11 @@ const data = ref(generateData(columns, 2))
   .el-table-v2__header-wrapper{
     .header-col-class{
       background-color: #ebeef5;
+      color: #333;
     }
     .editable-col{
       background-color: #D7E6FB;
+      color: #333;
     }
   }
 }
