@@ -124,6 +124,7 @@ import { ElMessage } from 'element-plus'
 import { Search } from '@element-plus/icons-vue'
 import { defineComponent, ref, getCurrentInstance, nextTick, onMounted } from 'vue'
 // import { useHomeFrontStore } from '@/modules/HomeFront/store/index'
+import personData from '../data/index'
 
 export default defineComponent({
   name: 'PersonChangeDialog',
@@ -169,12 +170,15 @@ export default defineComponent({
       //   page: currentPage.value,
       //   limit: pageSize.value
       // })
-      // if (!error) {
-      //   tableData.value = data.results as any
-      //   total.value = data.total
-      //   currentPage.value = data.page
-      //   pageSize.value = data.limit
-      // }
+
+      const { error, data } = personData.testPersonData
+
+      if (!error) {
+        tableData.value = data.results as any
+        total.value = data.total
+        currentPage.value = data.page
+        pageSize.value = data.limit
+      }
       tableLoading.value = false
     }
     // 获取默认表格数据
