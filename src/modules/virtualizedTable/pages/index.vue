@@ -155,34 +155,33 @@ const SelectCellRenderer = ({ rowData, column }) => {
     console.log('单元格',rowData[column.dataKey!])
     rowData.editing = true
   }
-
   const onExitEditMode = () => {
     // console.log('停止编辑11')
     rowData.editing = false
   }
   const select = ref()
   const setRef = (el) => {
-    // console.log('el', el)
     select.value = el
     if (el) {
       el.focus?.()
     }
   }
-  // rowData.editing ?
   return rowData.editing ? (
     <SelectCell
       forwardRef={setRef}
       value={rowData[column.dataKey!]}
       onChange={onChange}
       onKeydownEnter={onExitEditMode}
-      />
+      // onMouseout={onExitEditMode}
       // onBlur={onExitEditMode}
+    />
   ) : (
     <SelectDialogCell
       forwardRef={setRef} 
       value={rowData[column.dataKey!]}
       onChange={onChange}
-      onMouseover={onEnterEditMode}
+      onClick={onEnterEditMode}
+      // onMouseover={onEnterEditMode}
     />
   )
 }
@@ -292,7 +291,7 @@ const generateColumns = (length = 10, prefix = 'column-', props?: any) => {
       key: 'name',
       dataKey: 'name',
       title: '组成部分名称',
-      width: 400,
+      width: 500,
       editable: false,
       headerClass: 'header-col-class',
       cellRenderer: EllipsisCellRenderer
@@ -301,7 +300,7 @@ const generateColumns = (length = 10, prefix = 'column-', props?: any) => {
       key: 'template_name',
       dataKey: 'template_name',
       title: '当前使用模板',
-      width: 260,
+      width: 300,
       editable: false,
       headerClass: 'header-col-class',
       cellRenderer: EllipsisCellRenderer
@@ -328,7 +327,7 @@ const generateColumns = (length = 10, prefix = 'column-', props?: any) => {
       key: 'project_name',
       dataKey: 'project_name',
       title: '所属项目名称',
-      width: 360,
+      width: 400,
       editable: false,
       headerClass: 'header-col-class',
       cellRenderer: EllipsisCellRenderer
@@ -337,7 +336,7 @@ const generateColumns = (length = 10, prefix = 'column-', props?: any) => {
       key: 'person_in_charge_of_onsite',
       dataKey: 'person_in_charge_of_onsite',
       title: '负责人',
-      width: 300,
+      width: 400,
       editable: true,
       headerClass: 'header-col-class editable-col',
       cellRenderer: DialogCellRenderer
@@ -346,7 +345,7 @@ const generateColumns = (length = 10, prefix = 'column-', props?: any) => {
       key: 'members',
       dataKey: 'members',
       title: '项目组成员',
-      width: 300,
+      width: 400,
       editable: true,
       headerClass: 'header-col-class editable-col',
       cellRenderer: DialogCellRenderer
@@ -378,7 +377,7 @@ const generateData = (
   const tableData = virtualizedTableData.testTabledata.data.map((item, index) => {
     return {
       id: item.id,
-      index: item.index,
+      index: item.index+1,
       name: item.name,
       template_name: item.template_name,
       relation: item.relation,
@@ -552,6 +551,11 @@ const data = ref(generateData(columns, 2))
 
 <style scoped lang="scss">
 :deep(){
+  .el-table-v2__main{
+    border-style: solid;
+    border-color: #dfe5f3 !important;
+    border-width: 1px;
+  }
   .el-table-v2__row-cell{
     padding: 0;
     div:first-child{
@@ -564,6 +568,9 @@ const data = ref(generateData(columns, 2))
       border-radius: 0;
       display: flex;
       align-items: center;
+    }
+    &:last-of-type div{
+      border: none;
     }
     &.is-align-center .el-table-v2__cell-text{
       justify-content: space-around;
@@ -594,6 +601,9 @@ const data = ref(generateData(columns, 2))
       border-right-style: solid;
       border-color: #dfe5f3 !important;
       border-width: 1px;
+      &:last-of-type{
+        border: none;
+      }
     }
     .editable-col{
       background-color: #D7E6FB;
