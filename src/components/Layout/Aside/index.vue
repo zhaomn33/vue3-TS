@@ -133,6 +133,12 @@ const menuList = [
     name: '选择人员弹框',
     index: 'PersonChangeDemo',
     to: { name: 'PersonChangeDemo' }
+  },
+  {
+    icon: '#icon-hetongduanguanli',
+    name: '下拉框单元格',
+    index: 'SelectChangeCell',
+    to: { name: 'SelectChangeCell' }
   }
 ]
 

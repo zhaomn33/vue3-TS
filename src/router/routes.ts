@@ -41,6 +41,11 @@ const routesList:Array<RouteRecordRaw> = [
     path: '/PersonChangeDemo',
     name: 'PersonChangeDemo',
     component: () => import('@/modules/personChangeDialog/pages/index.vue')
+  },
+  {
+    path: '/SelectChangeCell',
+    name: 'SelectChangeCell',
+    component: () => import('@/modules/SelectChangeCell/pages/index.vue')
   }
 ]
 
