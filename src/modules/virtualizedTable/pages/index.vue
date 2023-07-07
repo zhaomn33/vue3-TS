@@ -65,7 +65,7 @@ const virtualizedTableRef = ref(null)
 // 行点击
 const curRow = ref()
 const curIndex = ref(0)
-
+const curRowId = ref(-1)
 // 获取弹框内数据
 const getDialogTableData = (data:any, type:string, changeIndex:number) => {
   // console.log('data--🐟', data, 'type--', type, 'index--', changeIndex)
@@ -174,6 +174,8 @@ const SelectDialogCell: FunctionalComponent<SelectionCellProps> = ({
 
 // 渲染下拉框
 const SelectCellRenderer = ({ rowData, column }) => {
+  const editing = curRowId.value === rowData.id
+  let visible = false
   const onChange = (value: string) => {
     console.log('改变数据11',value)
     rowData[column.dataKey!] = value
@@ -188,41 +190,50 @@ const SelectCellRenderer = ({ rowData, column }) => {
   //   // console.log('停止编辑11')
   //   rowData.editing = false
   // }
-  const select = ref()
+  const selectRef = ref()
+
   const setRef = (el) => {
-    select.value = el
+    // select.value = el
     if (el) {
+      editing && el.focus?.()
       // el.focus?.()
       // 点击后 options 自动弹出
-      el.visible = true
-
-      console.log('00000')
+      selectRef.value = el
+      console.log('00000',selectRef.value)
     }
   }
 
-  return rowData.editing ? (
+  return <div onClick={() => {
+    curRowId.value = rowData.id
+    setTimeout(() => {
+      console.log('selectRef',selectRef.value);
+      selectRef.value.focus()
+    }, 2000);
+  }}>
+    { editing ? (
     <SelectCell
-      forwardRef={setRef}
+      ref='selectRef'
       value={rowData[column.dataKey!]}
       onChange={onChange}
-      onVisible-change={(val:boolean) => {
-        if (!val) {
-          rowData.editing = false
-        }
-      }}
+      // onVisible-change={(val:boolean) => {
+      //   if (!val) {
+      //     rowData.editing = false
+      //   }
+      // }}
       // onKeydownEnter={onExitEditMode}
       // onMouseout={onExitEditMode}
       // onBlur={onExitEditMode}
     />
   ) : (
     <SelectDialogCell
-      forwardRef={setRef} 
       value={rowData[column.dataKey!]}
       onClick={onEnterEditMode}
       // onMouseover={onEnterEditMode}
       // onChange={onChange}
     />
   )
+}
+  </div>
 }
 // 渲染点击弹框
 const DialogCellRenderer = ({ rowData, column }) => {
