@@ -48,10 +48,10 @@ export default defineComponent({
 <script setup lang="tsx">
 import { computed, ref, FunctionalComponent, resolveComponent, ComponentPublicInstanceCostom, reactive, Ref, nextTick, watch } from 'vue'
 import { useDebounceFn, useWindowSize, useElementSize, useScroll } from '@vueuse/core'
-import { ElOption, TableV2FixedDir, ElIcon, Alignment } from 'element-plus'
+import { ElOption, TableV2FixedDir, ElIcon, Alignment, ElInput, ElSelect  } from 'element-plus'
 // import ArrowDown from 'element-plus'
 import { Filter, Switch, CircleCloseFilled, ArrowDown } from '@element-plus/icons-vue'
-import type { ExpandedRowsChangeHandler, RowExpandHandler, Column, InputInstance, ElInput, ElSelect } from 'element-plus'
+import type { ExpandedRowsChangeHandler, RowExpandHandler, Column, InputInstance } from 'element-plus'
 import PersonChangeDialog from '@/modules/personChangeDialog/pages/PersonChangeDialog.vue'
 import DialogDemo from '../components/dialogDemo.vue'
 import virtualizedTableData from '../data/index'
@@ -129,19 +129,17 @@ const SelectCell: FunctionalComponent<SelectionCellProps> = ({
 }) => {
   return (
     <ElSelect class={(!value || !value.length) && 'change-empty'} ref={forwardRef as any} modelValue={value} onChange={onChange}>
-      {{
-        default: () => (
-          selectOptions.value.map((item, index) => {
-            return (
-              <ElOption
-                key={index}
-                label={item.label}
-                value={item.value}
-              />
-            )
-          })
-        )
-      }}
+      {
+        selectOptions.value.map((item, index) => {
+          return (
+            <ElOption
+              key={index}
+              label={item.label}
+              value={item.value}
+            />
+          )
+        })
+      }
     </ElSelect>
   )
 }
@@ -174,8 +172,6 @@ const SelectDialogCell: FunctionalComponent<SelectionCellProps> = ({
 
 // 渲染下拉框
 const SelectCellRenderer = ({ rowData, column }) => {
-  const editing = curRowId.value === rowData.id
-  let visible = false
   const onChange = (value: string) => {
     console.log('改变数据11',value)
     rowData[column.dataKey!] = value
@@ -195,45 +191,32 @@ const SelectCellRenderer = ({ rowData, column }) => {
   const setRef = (el) => {
     // select.value = el
     if (el) {
-      editing && el.focus?.()
+      // editing && el.focus?.()
       // el.focus?.()
       // 点击后 options 自动弹出
-      selectRef.value = el
-      console.log('00000',selectRef.value)
+      el.visible = true
     }
   }
 
-  return <div onClick={() => {
-    curRowId.value = rowData.id
-    setTimeout(() => {
-      console.log('selectRef',selectRef.value);
-      selectRef.value.focus()
-    }, 2000);
-  }}>
-    { editing ? (
+  return rowData.editing ? (
     <SelectCell
       ref='selectRef'
       value={rowData[column.dataKey!]}
       onChange={onChange}
-      // onVisible-change={(val:boolean) => {
-      //   if (!val) {
-      //     rowData.editing = false
-      //   }
-      // }}
+      onVisible-change={(val:boolean) => {
+        if (!val) {
+          rowData.editing = false
+        }
+      }}
       // onKeydownEnter={onExitEditMode}
       // onMouseout={onExitEditMode}
-      // onBlur={onExitEditMode}
     />
   ) : (
     <SelectDialogCell
       value={rowData[column.dataKey!]}
       onClick={onEnterEditMode}
-      // onMouseover={onEnterEditMode}
-      // onChange={onChange}
     />
   )
-}
-  </div>
 }
 // 渲染点击弹框
 const DialogCellRenderer = ({ rowData, column }) => {
@@ -262,7 +245,7 @@ const DialogCellRenderer = ({ rowData, column }) => {
       value={rowData[column.dataKey!]}
       dataKeyValue={column.dataKey}
       onClick={onClick}
-      />
+    />
       // onChange={onChange}
   )
 }
