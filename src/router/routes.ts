@@ -8,19 +8,44 @@ const routesList:Array<RouteRecordRaw> = [
     component: () => import('@/modules/demo/pages/index.vue')
   },
   {
-    path: '/demo2',
+    path: '/demoList',
     children: [
       {
-        path: '/demo2',
-        name: 'demo2',
-        component: () => import('@/modules/demo2/pages/index.vue')
+        path: '/threeJS',
+        name: 'threeJS',
+        component: () => import('@/modules/threeJS/pages/index.vue')
       },
       {
-        path: '/demo3',
-        name: 'demo3',
-        component: () => import('@/modules/demo3/pages/index.vue')
+        path: '/svg',
+        name: 'svg',
+        component: () => import('@/modules/svg/pages/index.vue')
+      },
+      {
+        path: '/echarts',
+        name: 'echarts',
+        component: () => import('@/modules/echarts/pages/index.vue')
+      },
+      {
+        path: '/canvasDemo',
+        name: 'canvasDemo',
+        component: () => import('@/modules/canvasDemo/pages/index.vue')
       }
     ]
+  },
+  {
+    path: '/virtualizedTable',
+    name: 'virtualizedTable',
+    component: () => import('@/modules/virtualizedTable/pages/index.vue')
+  },
+  {
+    path: '/PersonChangeDemo',
+    name: 'PersonChangeDemo',
+    component: () => import('@/modules/personChangeDialog/pages/index.vue')
+  },
+  {
+    path: '/SelectChangeCell',
+    name: 'SelectChangeCell',
+    component: () => import('@/modules/SelectChangeCell/pages/index.vue')
   }
 ]
 

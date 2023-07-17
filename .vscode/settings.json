@@ -7,8 +7,27 @@
     "html",
     "vue"
   ],
-  // "eslint.run": "onSave"
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true // 保存时使用eslint校验文件
-  }
+  // "eslint.run": "onSave",
+  "editor.formatOnSave": false,
+	"editor.codeActionsOnSave": {
+    "source.fixAll": true, // 保存时使用eslint校验文件
+		"source.fixAll.eslint": true,
+    "eslint.autoFixOnSave": true,
+		"source.fixAll.stylelint": true
+	},
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+	"editor.formatOnPaste": false, // required 
+	"editor.formatOnType": false, // required
+	"editor.formatOnSaveMode": "file", // required to format on save
+	"files.autoSave": "onFocusChange", // optional but recommended
+	"vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
+	"editor.snippetSuggestions": "top",
+	"vetur,experimental,templateInterpolationService": true,
+	"vetur.experimental.scriptSetup": true,
+	"vetur.validation,template": true,
+	
+	"env": {
+		"browser": true, //引入window,document等全局变量时就不会报错
+		"node": true
+	},
 }

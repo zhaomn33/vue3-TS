@@ -13,7 +13,24 @@ export default defineConfig({
     vue(),
     // 自动引入全局变量
     AutoImport({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [ElementPlusResolver()],
+      imports: [
+        'vue',
+        'vue-router',
+        {
+          vue: ['createVNode', 'render'],
+          'vue-router': [
+            'createRouter',
+            'createWebHistory'
+          ],
+          uuid: [['v4', 'uuidv4']],
+          // 全局使用 _.xxxx()
+          'lodash-es': [
+            // default imports
+            ['*', '_'] // import { * as _ } from 'lodash-es',
+          ]
+        }
+      ]
     }),
     Components({
       resolvers: [ElementPlusResolver()]
@@ -53,5 +70,10 @@ export default defineConfig({
         additionalData: `@use '@/styles/element-variables.scss' as *;`
       }
     }
+  },
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment',
+    jsxInject: "import { h } from 'vue';"
   }
 })

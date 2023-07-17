@@ -3,7 +3,7 @@
     <el-page-header :icon="null">
       <template #title>
         <img
-          src="@/assets/svg/sw-logo.svg"
+          src="@/assets/svg/sun-logo.svg"
           alt="log"
           class="system-logo-img"
         >
@@ -66,6 +66,10 @@ const handleLogout = () => {
 
 <style scoped lang="scss">
 .header {
+  .system-logo-img{
+    height: 40px;
+    background-color: lightblue;
+  }
   :deep(){
     .el-page-header{
       .el-page-header__title{

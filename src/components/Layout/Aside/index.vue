@@ -98,17 +98,47 @@ const menuList = [
     children: [
       {
         icon: '#icon-dictionaries',
-        name: 'demo2',
-        index: 'demo2',
-        to: { name: 'demo2' }
+        name: 'threeJS',
+        index: 'threeJS',
+        to: { name: 'threeJS' }
       },
       {
         icon: '#icon-dictionaries',
-        name: 'demo3',
-        index: 'demo3',
-        to: { name: 'demo3' }
+        name: 'svg',
+        index: 'svg',
+        to: { name: 'svg' }
+      },
+      {
+        icon: '#icon-dictionaries',
+        name: 'echarts',
+        index: 'echarts',
+        to: { name: 'echarts' }
+      },
+      {
+        icon: '#icon-dictionaries',
+        name: 'canvasDemo',
+        index: 'canvasDemo',
+        to: { name: 'canvasDemo' }
       }
     ]
+  },
+  {
+    icon: '#icon-hetongduanguanli',
+    name: '虚拟化表格',
+    index: 'virtualizedTable',
+    to: { name: 'virtualizedTable' }
+  },
+  {
+    icon: '#icon-hetongduanguanli',
+    name: '选择人员弹框',
+    index: 'PersonChangeDemo',
+    to: { name: 'PersonChangeDemo' }
+  },
+  {
+    icon: '#icon-hetongduanguanli',
+    name: '下拉框单元格',
+    index: 'SelectChangeCell',
+    to: { name: 'SelectChangeCell' }
   }
 ]
 

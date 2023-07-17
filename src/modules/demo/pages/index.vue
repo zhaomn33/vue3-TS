@@ -12,6 +12,14 @@
     >
       测试删除弹框
     </el-button>
+    <DemoCom
+      :btn-text="'点击+1'"
+      @click="()=>text1+1"
+    />
+    <DemoCom
+      :btn-text="'点击+2'"
+      @click="()=>text2+2"
+    />
   </div>
 </template>
 
@@ -23,14 +31,18 @@ import {
   ref,
   reactive
 } from 'vue'
-import demo2 from '@/modules/demo2/pages/index.vue'
+import threeJS from '@/modules/threeJS/pages/index.vue'
+import DemoCom from '../components/demoCom.vue'
 
 export default defineComponent({
   name: 'Demo',
-  components: {},
+  components: { DemoCom },
   props: {},
   setup() {
     const proxy = getCurrentInstance()?.proxy as ComponentPublicInstanceCostom
+
+    const text1 = 0
+    const text2 = 0
 
     const handleDialog = () => {
       console.log('测试弹框成功')
@@ -44,7 +56,7 @@ export default defineComponent({
         showLeftFooter: false,
         renderComponent: {
           data,
-          component: demo2
+          component: threeJS
         },
         async onConfirm(instance: any) {
           const isValid = await instance.validationRules()
@@ -74,6 +86,8 @@ export default defineComponent({
     }
 
     return {
+      text1,
+      text2,
       handleDialog,
       handleDelete
     }
