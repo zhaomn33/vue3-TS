@@ -1,13 +1,13 @@
 ## Install
 
 ```
-npm install
+pnpm install
 ```
 
 
 ## Run
 
 ```
-npm run serve
+pnpm serve
 ```
 
