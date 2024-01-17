@@ -9,7 +9,7 @@ router.beforeEach(async(to, from, next) => {
   NProgress.start() // 开启顶部加载动画
   const userAccountStore = useUserAccount()
   // console.log('beforeEach to' ,to);
-  console.log("Cookie.get('token')",Cookie.get('token'));
+  console.log("Cookie.get('token')", Cookie.get('token'))
 
   // 如果不存在 token 则直接返回登录页
   if (!Cookie.get('token')) {
@@ -21,7 +21,7 @@ router.beforeEach(async(to, from, next) => {
   }
   // 如果存在 token 通过获取用户信息校验 token 有效性
   const { data, error } = await userAccountStore.getUserInfo()
-  console.log('data',data, error);
+  console.log('data', data, error)
 
   if (error){
 
