@@ -5,6 +5,7 @@ import {
 import routes from './routes'
 
 const history = createWebHistory()
+console.log(routes,'routes')
 
 export default createRouter({
   history,
