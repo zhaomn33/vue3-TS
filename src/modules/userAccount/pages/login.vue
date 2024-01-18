@@ -53,6 +53,7 @@ import {
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import useUserAccount from '@/modules/UserAccount/store'
+import requestSuite from '@/utils/request'
 
 export default defineComponent({
   name: 'Login',
@@ -85,7 +86,6 @@ export default defineComponent({
 
     const handleSubmit = () => {
       // console.log('ruleForms.value',ruleForms.value)
-      // console.log('userInfo',userInfo)
       ruleForms.value.validate(async(valid:boolean) => {
         // console.log('valid',valid)
         // 校验失败则退出
@@ -93,6 +93,18 @@ export default defineComponent({
         // 验证通过 展示 loading
         loading.value = true
         // 请求提交
+        try {
+          if (!userInfo.username || !userInfo.password) {
+            ElMessage.error('用户名或密码不能为空!')
+            return
+          }
+          // const login = await requestSuite.post('/api/login', userInfo)
+          // console.log(login, 'login')
+        } catch (e) {
+          console.log('eeeeee')
+          throw Error(e.message)
+        }
+
         const data = store.login(userInfo).finally(() => {
           ElMessage.success('登录成功!')
           router.push('/').then(() => {

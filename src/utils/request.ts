@@ -1,3 +1,7 @@
+/* global
+  IRequestData,
+  IRequestSuite
+*/
 import axios, { Axios, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import Cookie from 'js-cookie'
 import { Modal, message } from 'ant-design-vue'
@@ -54,23 +58,31 @@ const service: AxiosInstance = axios.create({
 // request 请求拦截器
 service.interceptors.request.use(
   request => {
-    const token = Cookie.get('token')
-    // console.log('token',token); // 4v8acea-6a89-2a2ebc-10802-9ac19003
+    const token = Cookie.get('token') ?? '4v8acea-6a89-2a2ebc-10802-9ac19003'
+    // console.log('token', token) // 4v8acea-6a89-2a2ebc-10802-9ac19003
     if (
       !(request.data instanceof FormData)
     ) {
       // request.data = decamelizeKeys(request.data)
     }
+    if (request.url === '/login') {
+      console.log(request, 'request')
+      return request
+    }
+    if (token){
+      // 设置 token 到 Cookie
+      Cookie.set('token', token)
+    }
     request.headers!.Authorization = token as string
-    // console.log('request.headers',request.headers);
-    
+    // console.log('request.headers', request.headers)
+
     return request
   },
   error => {
     Modal.confirm({
       title: '提示',
-      content: '请求超时!',
-    });
+      content: '请求超时!'
+    })
     return Promise.reject(error)
   }
 )
@@ -78,17 +90,17 @@ service.interceptors.request.use(
 // response 响应拦截器
 service.interceptors.response.use(
   response => {
-    console.log('response',response.data.status);
-    const res = response.data;
-    if(res.code != 200){
-      return;
+    console.log('response', response.data.status)
+    const res = response.data
+    if (res.code != 200){
+      return
     }
-    return response.data;
+    return response.data
   },
-  error=>{
-    if(error.response ){
-      console.log('error.response',error.response);
-      
+  error => {
+    if (error.response ){
+      console.log('error.response', error.response)
+
       // const match = /.+[#]/g.exec(location.href);
       // if(process.env.NODE_ENV === 'production'){
       //   location.href = '' //url
@@ -97,10 +109,33 @@ service.interceptors.response.use(
       //   location.href = url;
       // }
 
-      return false;
+      return false
     }
-    return Promise.reject(error.response.data);
+    return Promise.reject(error.response.data)
   }
 )
 
-export default service
+// export default service
+
+const requestSuite: IRequestSuite = {
+  get(uri, params, config) {
+    return service.get(uri, {
+      params,
+      ...config
+    })
+  },
+  post(uri, data, config) {
+    return service.post(uri, data, config)
+  },
+  put(uri, data, config) {
+    return service.put(uri, data, config)
+  },
+  patch(uri, data, config) {
+    return service.patch(uri, data, config)
+  },
+  delete(uri, config) {
+    return service.delete(uri, config)
+  }
+}
+
+export default requestSuite
