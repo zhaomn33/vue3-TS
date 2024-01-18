@@ -5,6 +5,7 @@
       v-model="visibleValue"
       :cur-data="currentData"
       :type="currentType"
+      @get-dialog-table-data="getDialogTableData"
     />
   </div>
 </template>
@@ -23,17 +24,27 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import PersonChangeDialog from './PersonChangeDialog.vue'
+import PersonChangeDialog, { Data } from './PersonChangeDialog.vue'
 
 const { proxy } = getCurrentInstance() as any
-const visibleValue = ref(true)
-const currentData = ref({})
+const visibleValue = ref(false)
+const currentData = ref<Array<Data>>([])
 const currentType = ref('')
 
 const handleClick = () => {
+  currentData.value = [
+    {
+      name: '张克',
+      code: 'BJ0001'
+    }
+  ]
+  console.log(currentData.value, 'currentData.value')
   visibleValue.value = true
 }
-
+const getDialogTableData = (data) => {
+  console.log(data, 'data')
+  // currentType.value = data
+}
 </script>
 
 <style scoped lang="scss">
