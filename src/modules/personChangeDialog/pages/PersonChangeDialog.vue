@@ -126,6 +126,11 @@ import { defineComponent, ref, getCurrentInstance, nextTick, onMounted } from 'v
 // import { useHomeFrontStore } from '@/modules/HomeFront/store/index'
 import personData from '../data/index'
 
+export interface Data {
+  name: string
+  code: string
+}
+
 export default defineComponent({
   name: 'PersonChangeDialog',
   components: {},
@@ -135,9 +140,9 @@ export default defineComponent({
       default: false
     },
     curData: {
-      type: Object,
+      type: Array<Data>,
       default: () => {
-        return {}
+        return [{}]
       }
     },
     type: {
@@ -158,7 +163,7 @@ export default defineComponent({
     const currentPage = ref(1)
     const pageSize = ref(20)
     // 已选中list
-    const checkedList = ref<Array<any>>([])
+    const checkedList = ref<Array<Data>>([])
     const inputSearchValue = ref('')
     const tableLoading = ref(false)
 
@@ -183,11 +188,13 @@ export default defineComponent({
     }
     // 获取默认表格数据
     const getDefaultTable = () => {
+      console.log(props.curData, 'props.curData')
       Object.keys(props.curData).length && props.curData?.forEach((item) => {
         checkedList.value.push({
           name: item.name,
           code: item.code
         })
+        console.log(item, 'item')
         tableData.value?.forEach((tableItem:any) => {
           if (tableItem.code == item.code) {
             proxy.$refs.selectionTableRef?.toggleRowSelection(tableItem, true)
@@ -203,7 +210,7 @@ export default defineComponent({
       await getTableList()
 
       tableLoading.value = false
-      await nextTick(
+      nextTick(
         () => {
           if (checkedList.value?.length && tableData.value?.length) {
             checkedList.value.forEach((checkItem: any) => {
