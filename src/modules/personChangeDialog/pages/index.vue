@@ -5,7 +5,6 @@
       v-model="visibleValue"
       :cur-data="currentData"
       :type="currentType"
-      @get-dialog-table-data="getDialogTableData"
     />
   </div>
 </template>
@@ -34,17 +33,13 @@ const currentType = ref('')
 const handleClick = () => {
   currentData.value = [
     {
-      name: '张克',
+      name: '111',
       code: 'BJ0001'
     }
   ]
-  console.log(currentData.value, 'currentData.value')
   visibleValue.value = true
 }
-const getDialogTableData = (data) => {
-  console.log(data, 'data')
-  // currentType.value = data
-}
+
 </script>
 
 <style scoped lang="scss">

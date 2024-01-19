@@ -122,7 +122,7 @@
 <script lang="ts">
 import { ElMessage } from 'element-plus'
 import { Search } from '@element-plus/icons-vue'
-import { defineComponent, ref, getCurrentInstance, nextTick, onMounted } from 'vue'
+import { defineComponent, ref, getCurrentInstance, nextTick, watch } from 'vue'
 // import { useHomeFrontStore } from '@/modules/HomeFront/store/index'
 import personData from '../data/index'
 
@@ -142,7 +142,7 @@ export default defineComponent({
     curData: {
       type: Array<Data>,
       default: () => {
-        return [{}]
+        return []
       }
     },
     type: {
@@ -188,19 +188,23 @@ export default defineComponent({
     }
     // 获取默认表格数据
     const getDefaultTable = () => {
-      console.log(props.curData, 'props.curData')
-      Object.keys(props.curData).length && props.curData?.forEach((item) => {
-        checkedList.value.push({
-          name: item.name,
-          code: item.code
+      if (Object.keys(props.curData).length){
+        props.curData?.forEach((item) => {
+          // 若已选中列表内不存在 则push
+          !checkedList.value.map((check) => check.code).includes(item.code) &&
+          checkedList.value.push({
+            name: item.name,
+            code: item.code
+          })
+          tableData.value?.forEach((tableItem:any) => {
+            if (tableItem.code == item.code) {
+              proxy.$refs.selectionTableRef?.toggleRowSelection(tableItem, true)
+            }
+          })
         })
-        console.log(item, 'item')
-        tableData.value?.forEach((tableItem:any) => {
-          if (tableItem.code == item.code) {
-            proxy.$refs.selectionTableRef?.toggleRowSelection(tableItem, true)
-          }
-        })
-      })
+      } else {
+        checkedList.value = []
+      }
     }
 
     // 搜索获取接口数据
@@ -331,10 +335,16 @@ export default defineComponent({
       await handleSearch()
     }
 
-    onMounted(async() => {
-      await handleSearch()
-      getDefaultTable()
-    })
+    watch(
+      () => [props.curData],
+      async() => {
+        await handleSearch()
+        getDefaultTable()
+      },
+      {
+        immediate: true
+      }
+    )
 
     return {
       tableLoading,
@@ -514,25 +524,19 @@ export default defineComponent({
 
             span{
               line-height: 20px;
-
               &:first-of-type{
                 margin-right: 16px;
               }
             }
           }
-
           .show-user-role-icon {
-            cursor: pointer;
             margin-right: 8px;
           }
         }
 
         .show-close-icon {
           font-size: 14px;
-
-          &:hover {
-            cursor: pointer;
-          }
+          cursor: pointer;
         }
       }
     }
