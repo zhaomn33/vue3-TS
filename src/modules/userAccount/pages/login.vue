@@ -98,8 +98,9 @@ export default defineComponent({
             ElMessage.error('用户名或密码不能为空!')
             return
           }
-          // const login = await requestSuite.post('/api/login', userInfo)
-          // console.log(login, 'login')
+          // 登录 - 触发请求拦截，获取token
+          const login = await requestSuite.post('/login', userInfo)
+          console.log(login, 'login')
         } catch (e) {
           console.log('eeeeee')
           throw Error(e.message)
