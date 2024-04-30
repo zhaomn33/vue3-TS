@@ -724,7 +724,6 @@ const data = ref(generateData(columns, 2))
   }
 }
 .virtualized-table-container{
-  padding: 24px;
   height: 100%;
   width: 100%;
   :deep(){

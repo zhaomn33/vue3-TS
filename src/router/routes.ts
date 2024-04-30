@@ -38,14 +38,19 @@ const routesList:Array<RouteRecordRaw> = [
     component: () => import('@/modules/virtualizedTable/pages/index.vue')
   },
   {
-    path: '/PersonChangeDemo',
-    name: 'PersonChangeDemo',
+    path: '/personChangeDemo',
+    name: 'personChangeDemo',
     component: () => import('@/modules/personChangeDialog/pages/index.vue')
   },
   {
-    path: '/SelectChangeCell',
-    name: 'SelectChangeCell',
-    component: () => import('@/modules/SelectChangeCell/pages/index.vue')
+    path: '/selectChangeCell',
+    name: 'selectChangeCell',
+    component: () => import('@/modules/selectChangeCell/pages/index.vue')
+  },
+  {
+    path: '/loadingMoreTableList',
+    name: 'loadingMoreTableList',
+    component: () => import('@/modules/loadingMoreTableList/pages/index.vue')
   }
 ]
 

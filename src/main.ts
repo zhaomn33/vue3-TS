@@ -7,6 +7,7 @@ import router from '@/router'
 
 import '@/assets/fonts'
 import '@/router/permission'
+import '@/index.css'
 
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'

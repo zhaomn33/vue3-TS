@@ -12,7 +12,7 @@
         <el-aside>
           <Aside />
         </el-aside>
-        <el-main>
+        <el-main class="flex-1 p-[20px]">
           <router-view v-slot="{ Component }">
             <KeepAlive>
               <Component :is="Component" />
@@ -41,7 +41,7 @@ const headerData = {
     .el-container.is-vertical{
       height: 100%;
     }
-    .el-aside, .el-main{
+    .el-aside{
       padding: 0;
     }
     .el-header{
