@@ -77,7 +77,6 @@ const options = [
 .select-change-container{
   height: 100%;
   width: 100%;
-  padding: 24px;
   :deep(){
     .editable-select{
       padding: 0;

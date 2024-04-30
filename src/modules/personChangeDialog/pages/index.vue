@@ -1,5 +1,5 @@
 <template>
-  <div class="person-dialog-box">
+  <div class="h-full w-full">
     <el-button @click="handleClick">点击选择人员弹框</el-button>
     <PersonChangeDialog
       v-model="visibleValue"
@@ -43,7 +43,4 @@ const handleClick = () => {
 </script>
 
 <style scoped lang="scss">
-.person-dialog-box{
-  padding: 24px;
-}
 </style>
