@@ -99,7 +99,11 @@ export default defineComponent({
             return
           }
           // 登录 - 触发请求拦截，获取token
-          const login = await requestSuite.post('/login', userInfo)
+          // const login = await requestSuite.post('/login', userInfo)
+          const login = {
+            error: 0,
+            msg: 'Login'
+          }
           console.log(login, 'login')
         } catch (e) {
           console.log('eeeeee')

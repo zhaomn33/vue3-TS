@@ -58,7 +58,7 @@ const service: AxiosInstance = axios.create({
 // request 请求拦截器
 service.interceptors.request.use(
   request => {
-    const token = Cookie.get('token') ?? '4v8acea-6a89-2a2ebc-10802-9ac19003'
+    const token = Cookie.get('token')
     // console.log('token', token) // 4v8acea-6a89-2a2ebc-10802-9ac19003
     if (
       !(request.data instanceof FormData)
