@@ -28,6 +28,7 @@ router.beforeEach(async(to, from, next) => {
 
     return
   }
+  Cookie.set('token', data.Authorization)
 
   next()
 })
